@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/level1Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 1" />
+
+    <Button
+        android:id="@+id/level2Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 2" />
+
+    <Button
+        android:id="@+id/level3Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 3" />
+
+    <Button
+        android:id="@+id/level4Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 4" />
+
+    <Button
+        android:id="@+id/level5Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 5" />
+
+    <!-- 추가적인 레벨 버튼들에 대한 내용을 여기에 추가 -->
+
+</LinearLayout>

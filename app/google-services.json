@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "233179478508",
+    "firebase_url": "https://tp-game-f679f-default-rtdb.firebaseio.com",
+    "project_id": "tp-game-f679f",
+    "storage_bucket": "tp-game-f679f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233179478508:android:9c9c7d63bb9a9fd32528c9",
+        "android_client_info": {
+          "package_name": "com.example.tp_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233179478508-s1q65a91l1mu5hkkbreb5omrtfdniele.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTxESu8EC5YE9KfWsuD4sVO68abujCY4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233179478508-s1q65a91l1mu5hkkbreb5omrtfdniele.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

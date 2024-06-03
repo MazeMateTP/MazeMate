@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="180dp"
+            android:src="@drawable/mazemate" />
+
+        <Button
+            android:id="@+id/btncreateroom"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#444444"
+            android:textColor="#FFFFFF"
+            android:text="Create Room" />
+
+        <Button
+            android:id="@+id/btnjoinroom"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#444444"
+            android:textColor="#FFFFFF"
+            android:text="Join Room" />
+        <Button
+            android:id="@+id/btnranking"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#444444"
+            android:textColor="#FFFFFF"
+            android:text="Ranking" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
