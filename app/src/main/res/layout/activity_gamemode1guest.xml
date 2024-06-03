@@ -1,55 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="ExtraText">
 
-    <!-- Menu Bar -->
-    <LinearLayout
-        android:id="@+id/menuBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/black"
-        android:layout_alignParentTop="true">
 
-        <!-- Game Menu -->
-        <Button
-            android:id="@+id/gameMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Game" />
-
-        <!-- Level Menu -->
-        <Button
-            android:id="@+id/levelMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Level" />
-
-        <!-- Computer Menu -->
-        <Button
-            android:id="@+id/computerMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Computer" />
-
-        <!-- Help Menu -->
-        <Button
-            android:id="@+id/helpMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Help" />
-    </LinearLayout>
-
-    <!-- Maze Panel -->
     <FrameLayout
         android:id="@+id/mazePanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/menuBar"
-        android:layout_above="@+id/buttonBarguest"
         android:background="@color/white"
         android:padding="5dp">
 
@@ -57,39 +18,63 @@
 
     <!-- Button Bar -->
     <LinearLayout
-        android:id="@+id/buttonBarguest"
+        android:id="@+id/buttonCenter"
+        android:layout_width="251dp"
+        android:layout_height="219dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/upButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:backgroundTint="#FAF4F4"
+            android:text="↑"
+            android:textColor="@color/black"
+            app:rippleColor="#FAF7F7" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/leftButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="←"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/rightButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="→"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/downButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="↓"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/black"
         android:layout_alignParentBottom="true">
-
-        <!-- Up Button -->
-        <Button
-            android:id="@+id/upButtonguest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="↑" />
-
-        <!-- Left Button -->
-        <Button
-            android:id="@+id/leftButtonguest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="←" />
-
-        <!-- Right Button -->
-        <Button
-            android:id="@+id/rightButtonguest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="→" />
-
-        <!-- Down Button -->
-        <Button
-            android:id="@+id/downButtonguest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="↓" />
     </LinearLayout>
 </RelativeLayout>

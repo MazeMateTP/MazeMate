@@ -179,12 +179,34 @@ public class Multimode1Activity extends AppCompatActivity {
 
                                 initializeguestMazePanel(mazeArray);
 
-                                GameData.getInstance().setGameStatusListener(new GameData.GameStatusListener() {
+                                gameData.setGameStatusListener(new GameData.GameStatusListener() {
                                     @Override
                                     public void onGameFinished() {
-                                        makeDialog();
+                                        long duration = gameData.getGameDuration();
+                                        System.out.println("The game has finished. Duration: " + duration + " milliseconds");
+                                        DatabaseReference timereference = FirebaseDatabase.getInstance().getReference("ranking").child("mode1").child(userId);
+                                        timereference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                // 데이터 읽기 성공
+                                                Long origin = dataSnapshot.getValue(Long.class);
+                                                if (origin == null || origin < duration) {
+                                                    // origin이 null이거나 duration보다 작을 경우 업데이트
+                                                    timereference.setValue(duration);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                                // 데이터 읽기 실패
+                                                System.out.println("Failed to read value.");
+                                            }
+                                        });
+
+                                        makeDialog(mazeArray);
                                     }
                                     public void onGameStarted() {
+                                        // 게임 시작 시 수행할 작업
                                         System.out.println("The game has started.");
                                     }
                                 });
@@ -203,10 +225,10 @@ public class Multimode1Activity extends AppCompatActivity {
                         }
                     });
                     //database get value of map
-                    Button upButtonguest = findViewById(R.id.upButtonguest);
-                    Button rightButtonguest = findViewById(R.id.rightButtonguest);
-                    Button downButtonguest = findViewById(R.id.downButtonguest);
-                    Button leftButtonguest = findViewById(R.id.leftButtonguest);
+                    Button upButtonguest = findViewById(R.id.upButton);
+                    Button rightButtonguest = findViewById(R.id.rightButton);
+                    Button downButtonguest = findViewById(R.id.downButton);
+                    Button leftButtonguest = findViewById(R.id.leftButton);
 
 
 
@@ -345,6 +367,33 @@ public class Multimode1Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 initializeMazePanel();  // 또는 원하는 다른 동작
+                dialog.dismiss();
+            }
+        });
+
+        exitgamebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteRoomData(roomNumber);
+                Intent intent = new Intent(Multimode1Activity.this, Room.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+    }
+    private void makeDialog(int[][] mazearray) {
+        Dialog dialog = new Dialog(this);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View dialogView = inflater.inflate(R.layout.dialog_gameover, null);
+        dialog.setContentView(dialogView);
+        dialog.show();
+
+        Button restartgamebutton = dialogView.findViewById(R.id.restart_game_button);
+        Button exitgamebutton = dialogView.findViewById(R.id.exit_game_button);
+        restartgamebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initializeguestMazePanel(mazearray);// 또는 원하는 다른 동작
                 dialog.dismiss();
             }
         });

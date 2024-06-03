@@ -280,15 +280,48 @@ public class Mode1GuestMazePanel extends View {
 
 
         if (passed()) {
-            Toast.makeText(getContext(), "Congratulations! You have cleared the maze!", Toast.LENGTH_SHORT).show();
-            // Refresh the maze after a 3-second delay
-            handler.postDelayed(new Runnable() {
+
+            DatabaseReference winnerRef = FirebaseDatabase.getInstance().getReference("rooms").child(roomNumber).child("winner");
+            winnerRef.setValue(Multimode1Activity.getPlayerId()); // Replace with your method to get the player ID
+
+            winnerRef.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void run() {
-                    setMazeSize(guestmaze.getSize());
-                    invalidate();
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String winner = dataSnapshot.getValue(String.class);
+                        if(winner == Multimode1Activity.getPlayerId()){
+                            Toast.makeText(getContext(), "Congratulations! You have cleared the maze!", Toast.LENGTH_SHORT).show();
+                            // Refresh the maze after a 2-second delay
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    GameData.getInstance().setGameFinished(true);
+                                }
+                            }, 2000);
+                        }else{
+                            Toast.makeText(getContext(), "Game over!", Toast.LENGTH_SHORT).show();
+                            // Refresh the maze after a 2-second delay
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    GameData.getInstance().setGameFinished(true);
+                                    //setMazeSize(maze.getSize());
+                                    //invalidate();
+                                }
+                            }, 3000);
+
+                        }
+                    }
                 }
-            }, 3000);
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle database errors
+                }
+            });
+
+            handler = new Handler(); // 핸들러 초기화
+
         }
 
     }
